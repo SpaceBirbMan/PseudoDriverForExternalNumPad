@@ -9,6 +9,7 @@
 #define TARGET_PID "2269"  
 
 // Коды функциональных клавиш
+#define VK_0 0
 #define VK_F13 100
 #define VK_F14 101
 #define VK_F15 102
@@ -20,11 +21,7 @@
 #define VK_F21 108
 #define VK_F22 109
 #define VK_F23 110
-#define VK_F24 120
-#define VK_F25 112
-#define VK_F26 113
-#define VK_F27 114
-#define VK_F28 115
+
 
 void SendUnicodeString(const std::wstring& text) {
     std::vector<INPUT> inputs;
@@ -90,22 +87,22 @@ int main() {
 
             InterceptionKeyStroke& kstroke = *(InterceptionKeyStroke*)&stroke;
             switch (kstroke.code) {
-            case 69: kstroke.code = VK_F13; break;  // Перехвачено 69 → F13
-            case 55: kstroke.code = VK_F14; break;
-            case 74: kstroke.code = VK_F15; break;
-            case 71: kstroke.code = VK_F16; break;
-            case 72: kstroke.code = VK_F17; break;
-            case 73: kstroke.code = VK_F18; break;
-            case 78: kstroke.code = VK_F19; break;
-            case 75: kstroke.code = VK_F20; break;
-            case 76: kstroke.code = VK_F21; break;
-            case 77: kstroke.code = VK_F22; break;
-            case 14: kstroke.code = VK_F23; break;
-            case 79: kstroke.code = VK_F24; break;
-            case 80: kstroke.code = VK_F25; break;
-            case 81: kstroke.code = VK_F26; break;
-            case 82: kstroke.code = VK_F27; break;
-            case 83: kstroke.code = VK_F28; break;
+            case 69: kstroke.code = VK_0; break;  // Перехвачено 69 → F13
+            case 55: kstroke.code = VK_0; break;
+            case 74: kstroke.code = VK_0; break;
+            case 71: kstroke.code = VK_F13; break;
+            case 72: kstroke.code = VK_F14; break;
+            case 73: kstroke.code = VK_F15; break;
+            case 78: kstroke.code = VK_0; break;
+            case 75: kstroke.code = VK_F16; break;
+            case 76: kstroke.code = VK_F17; break;
+            case 77: kstroke.code = VK_F18; break;
+            case 14: kstroke.code = VK_0; break;
+            case 79: kstroke.code = VK_F19; break;
+            case 80: kstroke.code = VK_F20; break;
+            case 81: kstroke.code = VK_F21; break;
+            case 82: kstroke.code = VK_F22; break;
+            case 83: kstroke.code = VK_F23; break;
             default:
                 /*interception_send(context, device, &stroke, 1);*/
                 continue;
