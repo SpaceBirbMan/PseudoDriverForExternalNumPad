@@ -9,22 +9,22 @@
 #define TARGET_PID "2269"  
 
 // Коды функциональных клавиш
-#define VK_F13 0x100
-#define VK_F14 0x101
-#define VK_F15 0x102
-#define VK_F16 0x103
-#define VK_F17 0x104
-#define VK_F18 0x105
-#define VK_F19 0x106
-#define VK_F20 0x107
-#define VK_F21 0x108
-#define VK_F22 0x109
-#define VK_F23 0x110
-#define VK_F24 0x111
-#define VK_F25 0x112
-#define VK_F26 0x113
-#define VK_F27 0x114
-#define VK_F28 0x115
+#define VK_F13 100
+#define VK_F14 101
+#define VK_F15 102
+#define VK_F16 103
+#define VK_F17 104
+#define VK_F18 105
+#define VK_F19 106
+#define VK_F20 107
+#define VK_F21 108
+#define VK_F22 109
+#define VK_F23 110
+#define VK_F24 120
+#define VK_F25 112
+#define VK_F26 113
+#define VK_F27 114
+#define VK_F28 115
 
 void SendUnicodeString(const std::wstring& text) {
     std::vector<INPUT> inputs;
@@ -89,7 +89,6 @@ int main() {
         if (hardware_id_str.find(TARGET_ID) != std::string::npos) {
 
             InterceptionKeyStroke& kstroke = *(InterceptionKeyStroke*)&stroke;
-
             switch (kstroke.code) {
             case 69: kstroke.code = VK_F13; break;  // Перехвачено 69 → F13
             case 55: kstroke.code = VK_F14; break;
@@ -108,12 +107,12 @@ int main() {
             case 82: kstroke.code = VK_F27; break;
             case 83: kstroke.code = VK_F28; break;
             default:
-                interception_send(context, device, &stroke, 1);
+                /*interception_send(context, device, &stroke, 1);*/
                 continue;
             }
-            std::cout << (int)kstroke.code << std::endl;
+            //std::cout << (int)kstroke.code << std::endl;
 
-            switch (kstroke.code) {
+           /* switch (kstroke.code) {
             case VK_F13:
                 keyPressed = !keyPressed;
                 if (!keyPressed) {
@@ -213,7 +212,7 @@ int main() {
             default:
                 interception_send(context, device, &stroke, 1);
                 continue;
-            }
+            }*/
             // Отправляем преобразованное событие
             interception_send(context, device, &stroke, 1);
         }
